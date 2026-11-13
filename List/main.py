@@ -10,8 +10,9 @@ for number in numbers:
         max=number
 print(max)
 
-# size=int(input("Enter the size of your list: "))
-# fruits=[]
-# for i in range(0,size,1):
-#     fruits[i]=int(input("Enter the name of a fruit: "))
-# print(fruits)
+total=0
+for num in numbers:
+    total+=num
+print("Total: ",total)
+print("Average: ",total/2)
+

@@ -11,3 +11,19 @@ for i in list:
     if min>i:
         min=i
 print("Smallest Element: ",min)
+
+total=0
+for i in list:
+    total+=i
+print("Total:",total)
+print("Average:",total/2)
+
+for i in list:
+    if i%2!=0:
+        continue
+    print(i)
+print("\n")
+for i in list:
+    if i%2==0:
+        continue
+    print(i)
