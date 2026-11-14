@@ -1,8 +1,9 @@
-def greet(name):
-    print(f"Hi {name}")
+def greet(first_name,second_name):
+    print(f"Hi {first_name} {second_name}")
     print("Welcome on board")
 
 print("Start")
-name=str(input("Enter your name: "))
-greet(name)
+first_name=str(input("Enter your name: "))
+second_name=str(input("Enter your second name: "))
+greet(first_name,second_name)
 print("Finish")
