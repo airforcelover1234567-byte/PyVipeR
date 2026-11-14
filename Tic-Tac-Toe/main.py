@@ -10,7 +10,7 @@ for rows in board:
 
 for i in range(0,9,1):
     row_num=int(input("Enter the row number: "))
-    index_num=int(input("Enter the index number: "))
+    index_num=int(input("Enter the index number: ").)
     board[row_num][index_num]='X'
 
     row=random.randrange(len(board))
