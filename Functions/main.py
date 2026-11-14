@@ -7,3 +7,8 @@ first_name=str(input("Enter your name: "))
 second_name=str(input("Enter your second name: "))
 greet(first_name,second_name)
 print("Finish")
+
+def sum(a,b):
+    return a+b
+
+print(sum(4,5))
