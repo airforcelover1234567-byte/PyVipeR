@@ -5,12 +5,18 @@ def win(player):
         return True
     else:
         return False
-def jump(k,j):
-    if k>9:
-        j+=1
-        return 9-k,j
+
+def jump(i,j):
+    if j>9:
+        return True
     else:
-        return j,k
+        return False
+
+def snake_1(player):
+    if player==board[4][4]:
+        return True
+    else:
+        return False
 board=[
     [1,2,3,4,5,6,7,8,9,10],
     [11,12,13,14,15,16,17,18,19,20],
@@ -36,12 +42,17 @@ while(win(player)==False):
     
     if choice==1:
         r=random.randint(0,5)
-        print(f"You rolled {r}")
-        k=j+r
-        jump(k,j)
-        player=board[i][k]
-        board[i][k]="P"
-        player=player
+        print(f"You rolled {r+1}")
+        j=j+r
+
+        if jump(i,j)==True:
+            i+=1
+            j=j-9
+        if snake_1(player)==True:
+            i=1
+            j=1
+        player=board[i][j]
+        board[i][j]="P"
 
         for items in board:
             print(items)
