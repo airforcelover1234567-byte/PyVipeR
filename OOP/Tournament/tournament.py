@@ -6,13 +6,46 @@ def registration():
     print("===REGISTRATION===")
     id=int(input("Enter your ID: "))
     name=str(input("Enter your name: "))
+    print("Player registered Sucessfully")
+    registrations.append(name)
+    ids.append(id)
+    return id,name
+
+def choice():
+    try:    
+        choice=int(input("Enter your choice: "))
+    except ValueError:
+        print("Enter a proper choice")
+        return choice
+
+def retry():
+    retry=int(input("Do you want to try again ?\n1.Yes   2.No "))
+    return retry
+
+class Registration:
+    def __init__(self,id,name):
+        self.id=id
+        self.name=name
 
 menu()
-try:    
-    choice=int(input("Enter your choice: "))
-except ValueError:
-    print("Enter a proper choice")
+ids=[]
+registrations=[]
 
-match(choice):
+match choice():
     case 1:
         registration()
+        player1=Registration(registration())
+
+    case 2:
+        print(registrations)
+
+while retry()==1:
+    menu()
+    choice()
+    match(choice):
+        case 1:
+            registration()
+            player1=Registration(registration())
+
+        case 2:
+            print(registrations)
