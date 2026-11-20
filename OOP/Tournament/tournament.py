@@ -1,45 +1,60 @@
+import random
+
 def menu():
     print("=====CHESS TOURNAMENT MANAGER=====")
     print("1.Register Player\n2.Create Match\n3.Record Match Result\n4.Display Players\n5.Display Matches\n6.Display Leaderboard\n7.Declare Winner\n8.Exit")
 
-def registration(registrations,ids,id,name):
-    print("===REGISTRATION===")
-    id=int(input("Enter your ID: "))
-    name=str(input("Enter your name: "))
-    print("Player registered Sucessfully")
-    registrations.append(name)
-    ids.append(id)
-    return id,name
-
-def choice():
-    try:    
-        choice=int(input("Enter your choice: "))
+def choice(choice_option):
+    try:
+        choice_option=int(input("Enter your choice: "))
     except ValueError:
-        print("Enter a proper choice")
-    return choice
+        print("Enter a valid choice Option")
+    return choice_option
 
-def retry():
-    retry=int(input("Do you want to try again ?\n1.Yes   2.No "))
-    return retry
+def name_input(name):
+    name=str(input("Enter your name: "))
+    name_list.append(name)
 
-class Registration:
-    def __init__(self,id,name):
-        self.id=id
-        self.name=name
+def id_input(id):
+    try:
+        id=int(input("Enter your id: "))
+    except:
+        print("Enter a valid ID")
+    id_list.append(id) 
 
-id=None
+def retry(retry_choice):
+    print("Do you want to retry ?")
+    print("1.YES  2.NO")
+    try:
+        retry_choice=int(input("Enter your choice if you want to retry: "))
+    except ValueError:
+        print("Enter a proper function")
+    return retry_choice
+
+def create_match(choice_list,name_list):
+    choice_list=random.choice(name_list)
+    name_list=name_list.remove(choice_list)
+    return choice_list
+
+retry_choice=None
+choice_option=None
 name=None
-ids=[]
-registrations=[]
+id=None
+name_list=[]
+id_list=[]
+choice_list=random.choice(name_list)
+
 menu()
 
-match choice():
-    case 1:
-        registration(registrations,ids,id,name)
-        registration_name=Registration(registration(id,name))
-        print(registration_name.name)
-    case 2:
-        print(registrations)
-# while retry()==1:
-#     menu()
-#     choice()
+while retry(retry_choice)!=2:
+    menu()
+    match choice(choice_option):
+        case 1:
+            id_input(id)
+            name_input(name)
+        case 2:
+            for i in range(0,len(name_list)):
+                create_match(choice_list,name_list)
+        case _:
+            print("Enter a proper option")
+
