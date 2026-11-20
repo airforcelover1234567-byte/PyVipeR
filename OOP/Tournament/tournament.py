@@ -31,18 +31,12 @@ def retry(retry_choice):
         print("Enter a proper function")
     return retry_choice
 
-def create_match(choice_list,name_list):
-    choice_list=random.choice(name_list)
-    name_list=name_list.remove(choice_list)
-    return choice_list
-
 retry_choice=None
 choice_option=None
 name=None
 id=None
 name_list=[]
 id_list=[]
-choice_list=random.choice(name_list)
 
 menu()
 
@@ -53,8 +47,15 @@ while retry(retry_choice)!=2:
             id_input(id)
             name_input(name)
         case 2:
-            for i in range(0,len(name_list)):
-                create_match(choice_list,name_list)
+            if name_list:
+                choice_list=random.choice(name_list)
+                name_list.remove(choice_list)
+            else:
+                print("Enter the data of some Participants")
+                id_input(id)
+                name_input(name)
+        case 3:
+            print(name_list)
         case _:
             print("Enter a proper option")
 
