@@ -37,6 +37,7 @@ name=None
 id=None
 name_list=[]
 id_list=[]
+choice_list=None
 
 menu()
 
@@ -48,14 +49,18 @@ while retry(retry_choice)!=2:
             name_input(name)
         case 2:
             if name_list:
-                choice_list=random.choice(name_list)
-                name_list.remove(choice_list)
+                for i in range(0,len(name_list)+1,1):
+                    if i%2==0:
+                        choice_match=random.choice(name_list)
+                        name_list.remove(choice_list)
+                        choice_list.append(choice_match)
             else:
                 print("Enter the data of some Participants")
                 id_input(id)
                 name_input(name)
         case 3:
             print(name_list)
+            print(choice_list)
         case _:
             print("Enter a proper option")
 
