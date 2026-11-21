@@ -37,7 +37,7 @@ name=None
 id=None
 name_list=[]
 id_list=[]
-choice_list=None
+choice_list=[]
 
 menu()
 
@@ -49,10 +49,10 @@ while retry(retry_choice)!=2:
             name_input(name)
         case 2:
             if name_list:
-                for i in range(0,len(name_list)+1,1):
+                for i in range(1,len(name_list)+1,1):
                     if i%2==0:
                         choice_match=random.choice(name_list)
-                        name_list.remove(choice_list)
+                        name_list.remove(choice_match)
                         choice_list.append(choice_match)
             else:
                 print("Enter the data of some Participants")
