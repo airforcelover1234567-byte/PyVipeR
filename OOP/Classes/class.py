@@ -1,7 +1,7 @@
 class Dog:
-    def __init__(self,name): #It is used to instantiate an object when it is created
-        self.name=name
-
+    def __init__(self): #It is used to instantiate an object when it is created
+        print("I am a good boy")
+        
     def meow(self,x):
         return "meow",x+1
 
