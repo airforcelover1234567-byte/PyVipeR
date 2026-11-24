@@ -19,3 +19,20 @@ class Course:
         if len(self.students) < self.max_students:
             self.students.append(student)
             return True
+        return False
+
+    def get_average_grade(self):
+        value=0
+        for student in self.students:
+            value+=student.get_grade()
+
+        return value/len(self.students)
+
+s1=Students("Roy",15,98)
+s2=Students("Haldar",17,75)
+s3=Students("Mandal",18,89)
+
+course=Course("Comp-Sci",2)
+course.add_student(s1)
+course.add_student(s2)
+print(course.get_average_grade())
