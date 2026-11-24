@@ -63,7 +63,7 @@ class Cargo_Ship(Spacecrafts):
 
 class Exploration_Ship(Spacecrafts):
     def __init__(self):
-        super().__init__()
+        super().__init()
         self.scan=100000
         self.planet_list=[
     "Nyxara",
