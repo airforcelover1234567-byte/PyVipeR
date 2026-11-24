@@ -1,27 +1,25 @@
 def menu():
-    print("1.Bank  2.Account")
+    print("---PYBANK---")
+
+def options():
+    print("1. Create a Bank Account\n2. Login to an Existing Account\n3. View Bank Information\n4. Exit")
+
+menu()
+options()
+choice=int(input("Enter your choice: "))
 
 class Bank:
-    def __init__(self):
-        self.accounts=[]
-        self.next_acc_no=1
+    def __init__(self,name,age,deposit):
+        self.name=name
+        self.age=age
+        self.deposit=deposit
 
     def create(self):
-        self.name=name
-        self.acc_no=acc_no
-        name=int(input("Enter your name: "))
-        acc_no=int(input("Enter your Acc. No : "))
+        self.name=str(input("Enter your name: "))
+        self.age=int(input("Enter your age: "))
+        self.deposit=int(input("Enter the money you want to deposit: "))
+        return self.name
 
-class Account:
-    def __init__(self,name,balance,acc_no):
-        self.name=name
-        self.balance=balance
-        self.acc_no=acc_no
-
-    def deposit(self):
-        deposit=int(input("Enter the money you want to deposit: "))
-
-choice=int(input("Enter your choice: "))
 match choice:
     case 1:
-        acc1=Bank.create()
+        Bank().create
