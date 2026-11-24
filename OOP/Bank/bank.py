@@ -6,20 +6,21 @@ def options():
 
 menu()
 options()
-choice=int(input("Enter your choice: "))
+acc=[]
 
 class Bank:
-    def __init__(self,name,age,deposit):
-        self.name=name
-        self.age=age
-        self.deposit=deposit
+    def __init__(self):
+        self.name
+        self.age
+        self.deposit
 
-    def create(self):
+    def user_input(self):
         self.name=str(input("Enter your name: "))
         self.age=int(input("Enter your age: "))
-        self.deposit=int(input("Enter the money you want to deposit: "))
-        return self.name
+        self.deposit=int(input("Enter your deposit: "))
+
+choice=int(input("Enter your choice: "))
 
 match choice:
     case 1:
-        Bank().create
+        acc=Bank()
