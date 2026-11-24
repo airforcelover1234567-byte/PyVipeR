@@ -1,0 +1,12 @@
+{
+    "name":"Rounak",
+    "favourite_number":3,
+    "isProgrammer":true,
+    "hobbies":["Programming","Chip Design","Standup"],
+    "friends":[{
+        "name":"Arya",
+        "favourite_number":7,
+        "isProgrammer":false,
+        "hobbies":["Gaming","Flirting"]
+    }]
+}
