@@ -5,19 +5,20 @@ def menu():
     print("Choose spacecraft type:\n1. Fighter\n2. Cargo Ship\n3. Exploration Ship")
 
 def fighter_menu():
-    print("1.Attack  2.Weapon Info")
+    print("1.Attack  2.Weapon Info  3.Fight")
 
 def cargo_menu():
     print("1.Unload  2.Load  3.Cargo Info")
 
 def explore_menu():
-    print("1.Planet Scan  2.Discovery")
+    print("1.Planet Scan  2.Discovery  3.Inventory")
 
 class Spacecrafts:
     def __init__(self):
         self.name=str(input("Enter name ship: "))
         self.fuel=int(input("Enter fuel capacity of ship: "))
         self.speed=int(input("Enter max speed of ship: "))
+        self.hp=int(input("Enter HP of ship: "))
 
     def ship_info(self):
         print(f"Name:{self.name}")
@@ -63,7 +64,7 @@ class Cargo_Ship(Spacecrafts):
 
 class Exploration_Ship(Spacecrafts):
     def __init__(self):
-        super().__init()
+        super().__init__()
         self.scan=100000
         self.planet_list=[
     "Nyxara",
@@ -83,6 +84,21 @@ class Exploration_Ship(Spacecrafts):
     "Erebus",
     "Chronos",
 ]
+        self.cosmic_items = [
+    "Nebula Silk",
+    "Starfire Ember",
+    "Astral Compass",
+    "Singularity Shard",
+    "Null-Stone",
+    "Void-Walker Boots",
+    "Aether-Vial",
+    "Resonance Prism",
+    "Chrono-Amber",
+    "Cryo-Marrow",
+    "Magma-Glass Blade"
+]
+        self.inventory=[]
+
 
 
     def planet_scan(self):
@@ -90,12 +106,42 @@ class Exploration_Ship(Spacecrafts):
         self.planet_list.remove(self.scan_planets)
         print(f"{self.name} has scanned something")
         print(f"It is the planet {self.scan_planets}")
+        self.scan_items=random.choice(self.cosmic_items)
+        print(f"You got {self.scan_items}")
+        accept=str(input("Do you want to take it(y/n): "))
+        if accept.lower()=="y":
+            self.inventory.append(self.scan_items)
+
 
     def discovery(self):
         self.discoveries=[]
         self.discoveries.append(self.scan_planets)
         for i in self.discoveries:
             print(i)
+
+    def items(self):
+        print(f"{self.inventory}")
+        for i in self.inventory:
+            print(i)
+
+class Enemy_Fighter:
+    def __init__(self):
+        enemy_choice=random.randint(1,100)
+        if 0<enemy_choice<80:
+            print("You have faced up against the Avenger")
+            self.name="Avenger"
+            self.ammo=10000
+            self.hp=1000
+        elif 80<enemy_choice<95:
+            print("You have faced up against the Destroyer")
+            self.name="Destroyer"
+            self.ammo=10000
+            self.hp=10000
+        else:
+            print("You have faced against the Beast")
+            self.name="Destroyer"
+            self.ammo=10000
+            self.hp=50000
 
 menu()
 choice=int(input("Enter the type of Spacecraft: "))
@@ -111,6 +157,25 @@ match choice:
                 player.attack()
             case 2:
                 player.weapon_info()
+            case 3:
+                enemy=Enemy_Fighter()
+                while enemy.hp>=0 or player.hp>0:
+                    print("1.Attack")
+                    attack=int(input())
+                    enemy_attack=1
+                    if attack and enemy_attack==1:
+                        player.hp=player.hp-100
+                        enemy.hp=enemy.hp-100
+                        print(f"HP:{player.hp}")
+                        print(f"Enemy HP:{enemy.hp}")
+                    if player.hp<=0:
+                        print("You lost")
+                        print(f"{enemy.name} won")
+                        break
+                    elif enemy.hp<=0:
+                        print("You won")
+                        print(f"{enemy.name} lost")
+                        break
             case _:
                 print("Enter a proper Function")
     case 2:
@@ -137,6 +202,8 @@ match choice:
                 player.planet_scan()
             case 2:
                 player.discovery()
+            case 3:
+                player.items()
             case _:
                 print("Enter a proper function")
     case _:
